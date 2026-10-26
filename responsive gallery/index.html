@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature Gallery</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-black text-red-500">
+
+    <header class="text-center py-10 px-4">
+        <h1 class="text-4xl font-bold">
+            Nature Gallery
+        </h1>
+
+        <p class="text-gray-600 mt-3">
+            Views and images of nature.
+        </p>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 pb-12">
+
+        <div class="gallery grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+            <img src="https://picsum.photos/id/17/800/600" alt="caminho na floresta">
+
+            <img src="https://picsum.photos/id/10/800/600" alt="Floresta">
+
+            <img src="https://picsum.photos/id/15/800/600" alt="Rio">
+
+            <img src="https://picsum.photos/id/28/800/600" alt="Paisagem natural">
+
+            <img src="https://picsum.photos/id/29/800/600" alt="Montanhas">
+
+            <img src="https://picsum.photos/id/37/800/600" alt="Natureza">
+
+            <img src="https://picsum.photos/id/54/800/600" alt="Paisagem">
+
+            <img src="https://picsum.photos/id/57/800/600" alt="Árvores">
+
+            <img src="https://picsum.photos/id/70/800/600" alt="Paisagem natural">
+
+            <img src="https://picsum.photos/id/89/800/600" alt="Montanha">
+
+            <img src="https://picsum.photos/id/1018/800/600" alt="Vale">
+
+            <img src="https://picsum.photos/id/1015/800/600" alt="Rio e montanhas">
+
+        </div>
+
+    </main>
+
+    <div id="lightbox" class="lightbox hidden">
+        <button id="close" class="close" aria-label="Fechar imagem">
+            &times;
+        </button>
+        <img id="lightbox-img" src="" alt="Imagem ampliada">
+    </div>
+
+   
+<footer class="bg-black text-red-500 text-center py-6">
+    <p class="text-red-500 text-sm">
+        Responsive Gallery - 2026
+    </p>
+
+    <p class="text-red-500 text-xs mt-2">
+       Henrique Leite
+    </p>
+</footer>
+
+    <script>
+        const images = document.querySelectorAll(".gallery img");
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const closeBtn = document.getElementById("close");
+
+        // Abrir imagem
+        images.forEach(image => {
+            image.addEventListener("click", () => {
+                lightboxImg.src = image.src;
+                lightboxImg.alt = image.alt;
+                lightbox.classList.remove("hidden");
+            });
+        });
+
+        // Fechar imagem
+        function closeLightbox() {
+            lightbox.classList.add("hidden");
+            lightboxImg.src = "";
+        }
+
+        closeBtn.addEventListener("click", closeLightbox);
+
+        // Fechar ao clicar fora da imagem
+        lightbox.addEventListener("click", (event) => {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Fechar com Escape
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+        });
+    </script>
+
+</body>
+</html>
